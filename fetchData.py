@@ -2,8 +2,8 @@
 
 import requests
 import pandas as pd
-API_KEY = '3c22dcf8f74c30b5c79bc0952062c19d'
-API_ID = 'fec1d0ee'
+API_KEY = ''
+API_ID = ''
 # dir(all commands), status code to check status code 
 # countries from api documentation
 countries = ["at", "be", "de", "es", "fr", "it", "nl", "pl", "gb", "ch"]
@@ -12,7 +12,7 @@ keywords = ["machine learning", "data scientist", "ML engineer", "deep learning"
 
 page = 1
 jobs = []
-# for each country make a list of each job 
+# for each country make a list of each job, loop for using multiple keywords 
 for country in countries:
     url = f'https://api.adzuna.com/v1/api/jobs/{country}/search/{page}'
     Params = {
