@@ -2,6 +2,7 @@
 
 
 import pandas as pd
+import re
 
 df = pd.read_csv("ml_jobs_europe_raw.csv")
 
@@ -58,7 +59,7 @@ def skill_function(description):
     ]
     found = []
     for skill in skills:
-        if skill in description.lower():
+        if re.search(r'\b' + skill + r'\b', description.lower()):
             found.append(skill)
     return ", ".join(found)
             
@@ -66,4 +67,4 @@ df["skills"] = df["description"].apply(skill_function)
 print(df["skills"][10])
 print(df["description"][0][-100:])
 print(df[df["skills"] != ""].shape)
-#df.to_csv("ml_jobs_europe_clean.csv", index = False)
+df.to_csv("ml_jobs_europe_clean.csv", index = False)
